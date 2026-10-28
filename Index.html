@@ -4,36 +4,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cozy Loops Counter</title>
+<title>My Crochet Counter</title>
 <style>
-body{font-family:Arial,sans-serif;background:#fff0f6;color:#783c59;text-align:center;padding:20px}
-.card{background:white;border-radius:25px;padding:25px;margin:35px auto;max-width:350px;box-shadow:0 5px 20px #edb6d0}
-h1{font-size:25px}
-#count{font-size:75px;font-weight:bold;margin:25px}
-button{border:0;border-radius:15px;padding:15px;margin:6px;font-size:18px;background:#f3a9ca;color:#632b48}
-.reset{background:#fce0ec}
-input{padding:12px;border:1px solid #edb6d0;border-radius:10px;width:75%;font-size:16px}
+body {
+  font-family: Arial, sans-serif;
+  background: #fff0f5;
+  color: #a83e68;
+  text-align: center;
+  padding: 25px 12px;
+}
+.card {
+  background: white;
+  border-radius: 25px;
+  padding: 25px 15px;
+  max-width: 340px;
+  margin: 25px auto;
+  box-shadow: 0 5px 18px #e9b8cc;
+}
+h1 { font-size: 27px; }
+#count {
+  font-size: 75px;
+  margin: 25px;
+  font-weight: bold;
+}
+button {
+  border: none;
+  border-radius: 16px;
+  padding: 15px 23px;
+  margin: 6px;
+  font-size: 20px;
+  background: #f5b5ce;
+  color: #813052;
+}
+.reset { font-size: 15px; background: #ffe1eb; }
 </style>
 </head>
 <body>
 <div class="card">
-<h1>𐙚 Cozy Loops 🧶</h1>
-<p>My Crochet Round Counter ♡</p>
-<input id="project" placeholder="Project name">
+<h1>🧶 My Crochet Counter 🎀</h1>
+<p>Keep counting your lovely rounds!</p>
 <div id="count">0</div>
-<button onclick="change(1)">＋ Round</button>
-<button onclick="change(-1)">－</button>
+<button onclick="change(1)">＋</button>
+<button onclick="change(-1)">−</button>
 <br>
 <button class="reset" onclick="resetCount()">↻ Reset</button>
-<p id="saved">Made with love 💗</p>
+<p>♡ Handmade with love ♡</p>
 </div>
 <script>
-let count=Number(localStorage.getItem('roundCount')||0);
-document.getElementById('project').value=localStorage.getItem('projectName')||'';
-function show(){document.getElementById('count').textContent=count;localStorage.setItem('roundCount',count)}
-function change(n){count=Math.max(0,count+n);show()}
-function resetCount(){if(confirm('Reset rounds to zero?')){count=0;show()}}
-document.getElementById('project').addEventListener('input',function(){localStorage.setItem('projectName',this.value)});
+let rounds = Number(localStorage.getItem('crochetRounds')) || 0;
+function show() {
+  document.getElementById('count').textContent = rounds;
+}
+function change(n) {
+  rounds = Math.max(0, rounds + n);
+  localStorage.setItem('crochetRounds', rounds);
+  show();
+}
+function resetCount() {
+  if (confirm('Reset your round count?')) {
+    rounds = 0;
+    localStorage.setItem('crochetRounds', rounds);
+    show();
+  }
+}
 show();
 </script>
 </body>
